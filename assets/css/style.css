@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #1f1f1f;
+  }
+  
+  .navbar {
+    padding: 32px;
+    border-bottom: 1px solid #1f1f1f;
+    color: #fff;
+    background-color: #00308f;
+  }
+  
+  #search-box {
+    padding: 16px 32px;
+    border-right: 1px solid #1f1f1f;
+  }
+  
+  .list-group {
+    padding-top: 18px;
+  }
+  
+  #weather-box {
+    padding: 32px;
+    background-image: linear-gradient(
+      to right top,
+      #dfe6e9,
+      #d9e8ed,
+      #d1ebf1,
+      #caedf3,
+      #c2f0f4
+    );
+  }

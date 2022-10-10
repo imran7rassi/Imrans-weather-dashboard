@@ -54,3 +54,28 @@ window.onload = function () {
 
                   // construct URL for UV index
                   var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?appid=000401db107b5cbe165fdf198e9f1e47&lat=" + lat + "&lon=" + lon;
+                  
+                  $.ajax({
+                        url: queryURL2,
+                        method: "GET"
+
+                  }).then(function (response2) {
+
+                        var uvIndex = $("<p>").text("UV Index: " + Math.floor(response2.value));
+                        $("#city-box").append("<div id='uv-box' class=''></div>");
+                        $("#uv-box").append(uvIndex);
+
+                        // UV Index Color Change 
+                        if (Math.floor(response2.value) <= 2) {
+                              $("#uv-box").addClass("uvFavorable");
+                        } if (Math.floor(response2.value) >= 3 && Math.floor(response2.value) <= 8) {
+                              $("#uv-box").addClass("uvModerate");
+                        } if (Math.floor(response2.value) >= 9) {
+                              $("#uv-box").addClass("uvSevere");
+                        }
+
+                  });
+            });
+
+      });
+      

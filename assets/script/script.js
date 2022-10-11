@@ -198,3 +198,21 @@ window.onload = function () {
       });
 
 }
+// LOCAL STORAGE
+
+// save to local storage: city-box (current  weather div)
+const storageInput = document.querySelector("#city-box");
+const text = document.querySelector("#city-box");
+const storedInput = localStorage.getItem('textinput');
+
+if (storageInput) {
+      text.innerHTML = storedInput;
+}
+
+storageInput.addEventListener('input', letter => {
+      text.innerHTML = letter.target.value;
+})
+
+const saveToLocalStorage = () => {
+      localStorage.setItem('textinput', text.innerHTML);
+}

@@ -451,4 +451,37 @@ function searchHistory() {
                         var date3 = response.list[24].dt_txt;
                         var slicedate3 = date3.slice(5, 10);
       
+                        var date3 = $("<p>").text(slicedate3);
+                        var weatherIcon3 = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.list[24].weather[0].icon + ".png");
+                        var weatherType3 = $("<p class='bold'>").text(response.list[24].weather[0].main);
+                        // kelvin to°
+                        var tempHighInt3 = parseInt(response.list[24].main.temp_max);
+                        var tempHighF3 = (tempHighInt3 * 9 / 5) - 459.67;
+                        var cityHighTemp3 = $("<p class='temp'>").text(Math.floor(tempHighF3) + "°");
       
+                        var humidity3 = $("<p>").text("Humidity: " + response.list[24].main.humidity + "%");
+      
+                        // Empty the contents of the city-box div, append the current weather of searched city
+                        $("#div3").empty();
+                        $("#div3").append(date3, weatherIcon3, weatherType3, cityHighTemp3, humidity3);
+      
+                        // day five
+                        var date4 = response.list[32].dt_txt;
+                        var slicedate4 = date4.slice(5, 10);
+      
+                        var date4 = $("<p>").text(slicedate4);
+                        var weatherIcon4 = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.list[32].weather[0].icon + ".png");
+                        var weatherType4 = $("<p class='bold'>").text(response.list[32].weather[0].main);
+                        // kelvin to°
+                        var tempHighInt4 = parseInt(response.list[32].main.temp_max);
+                        var tempHighF4 = (tempHighInt4 * 9 / 5) - 459.67;
+                        var cityHighTemp4 = $("<p class='temp'>").text(Math.floor(tempHighF4) + "°");
+      
+                        var humidity4 = $("<p>").text("Humidity: " + response.list[32].main.humidity + "%");
+      
+                        // Empty the contents of the city-box div, append the current weather of searched city
+                        $("#div4").empty();
+                        $("#div4").append(date4, weatherIcon4, weatherType4, cityHighTemp4, humidity4);
+                  });
+            });
+      }      

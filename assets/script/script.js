@@ -300,3 +300,76 @@ storageInput4.addEventListener('input4', letter4 => {
 const saveToLocalStorage4 = () => {
       localStorage.setItem('textinput4', text4.innerHTML);
 }
+
+
+// WHEN I click on a city in the search history
+//THEN I am again presented with current and future conditions for that city
+function searchHistory() {
+
+      $("#city-list").on('click', 'li', function () {
+
+            console.log($(this).text());
+            var city = $(this).text();
+
+
+            // construct URL
+            var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=000401db107b5cbe165fdf198e9f1e47";
+
+            // hit the queryURL with $ajax
+            //take response data and display it in the city-box within the weather-div
+            $.ajax({
+                  url: queryURL,
+                  method: "GET"
+
+            }).then(function (response) {
+
+                  // Constructing HTML containing the weather information for searched city
+                  var cityName = $("<h2>").text(response.name);
+                  var cityNameList = $("<li>").text(response.name);
+                  cityNameList.addClass("list-group-item");
+
+                  var weatherIcon = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
+                  var weatherType = $("<p class='bold'>").text(response.weather[0].main);
+
+                  // kelvin to F
+                  var tempInt = parseInt(response.main.temp);
+                  var tempF = (tempInt * 9 / 5) - 459.67;
+                  var cityTemp = $("<p class='temp'>").text("Current Temperature: " + Math.floor(tempF) + "°");
+                  var cityHumidity = $("<p>").text("Humidity: " + response.main.humidity + "%");
+                  var cityWindSpeed = $("<p>").text("Wind Speed: " + response.wind.speed + " MPH");
+
+                  // Empty the contents of the city-box div, append the current weather of searched city
+                  $("#city-box").empty();
+                  $("#city-box").append(cityName, weatherIcon, weatherType, cityTemp, cityHumidity, cityWindSpeed);
+
+                  // UV INDEX
+                  var lat = response.coord.lat;
+                  var lon = response.coord.lon;
+
+                  // construct URL for UV index
+                  var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?appid=000401db107b5cbe165fdf198e9f1e47&lat=" + lat + "&lon=" + lon;
+
+                  $.ajax({
+                        url: queryURL2,
+                        method: "GET"
+
+                  }).then(function (response2) {
+
+                        var uvIndex = $("<p>").text("UV Index: " + Math.floor(response2.value));
+                        $("#city-box").append("<div id='uv-box' class=''></div>");
+                        $("#uv-box").empty();
+                        $("#uv-box").append(uvIndex);
+
+                        // UV Index Color Change 
+                        if (Math.floor(response2.value) <= 2) {
+                              $("#uv-box").addClass("uvFavorable");
+                        } if (Math.floor(response2.value) >= 3 && Math.floor(response2.value) <= 8) {
+                              $("#uv-box").addClass("uvModerate");
+                        } if (Math.floor(response2.value) >= 9) {
+                              $("#uv-box").addClass("uvSevere");
+                        }
+
+                  });
+            });
+      });
+}

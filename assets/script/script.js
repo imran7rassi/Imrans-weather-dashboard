@@ -266,3 +266,37 @@ storageInput2.addEventListener('input2', letter2 => {
 const saveToLocalStorage2 = () => {
       localStorage.setItem('textinput2', text2.innerHTML);
 }
+
+// save to local storage: day 4 five-day-box (5 day forecast)
+const storageInput3 = document.querySelector("#div3");
+const text3 = document.querySelector("#div3");
+const storedInput3 = localStorage.getItem('textinput3');
+
+if (storageInput3) {
+      text3.innerHTML = storedInput3;
+}
+
+storageInput3.addEventListener('input3', letter3 => {
+      text3.innerHTML = letter3.target.value;
+})
+
+const saveToLocalStorage3 = () => {
+      localStorage.setItem('textinput3', text3.innerHTML);
+}
+
+// save to local storage: day 5 five-day-box (5 day forecast)
+const storageInput4 = document.querySelector("#div4");
+const text4 = document.querySelector("#div4");
+const storedInput4 = localStorage.getItem('textinput4');
+
+if (storageInput4) {
+      text4.innerHTML = storedInput4;
+}
+
+storageInput4.addEventListener('input4', letter4 => {
+      text4.innerHTML = letter4.target.value;
+})
+
+const saveToLocalStorage4 = () => {
+      localStorage.setItem('textinput4', text4.innerHTML);
+}

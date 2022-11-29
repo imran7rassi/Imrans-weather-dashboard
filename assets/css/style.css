@@ -1,0 +1,42 @@
+
+/* background */
+
+*{
+  box-sizing: border-box;
+  
+}
+
+/* body style */
+body {
+  
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+}
+/* the h3 styling */
+h3{
+  font-weight: bold;
+}
+
+/* the forecast styling */
+
+.forecast{
+  
+  font-size: 0.9em;
+}
+
+/* the span styling */
+span{
+  font-size: 1em;
+}
+
+/* the hover */
+li:hover{
+  background-color: lightslategray;
+  text-decoration: underline;
+}
+
+/* the footer styling */
+footer{
+  font-size: 16px;
+}

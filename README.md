@@ -16,7 +16,8 @@ The link of the webpage is: https://imran7rassi.github.io/Imrans-weather-dashboa
 - Step 3 : Then click the Search button.
 - Step 4 : When you refresh the page your searched city will be still there.
 
-<img src="./assets/images/weather-dashboard.jpg/" >
+![](./assets/images/weather-1.jpg)
+![](./assets/images/weather-2.jpg)
 
 
 ## Credits
